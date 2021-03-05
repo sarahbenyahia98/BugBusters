@@ -8,7 +8,8 @@ package Entities;
 /**
  *
  * @author Sarah
- */
-public class Admin {
-    
+
+*/
+public enum Gender {
+    Male , Female 
 }

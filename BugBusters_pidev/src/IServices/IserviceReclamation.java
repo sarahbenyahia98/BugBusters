@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Entities;
+package IServices;
+
+import java.sql.SQLException;
 
 /**
  *
  * @author Sarah
  */
-public class Artist {
-    
+public interface IserviceReclamation<R> {
+    void insert(R r )throws SQLException;
 }
