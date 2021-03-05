@@ -39,7 +39,8 @@ public  class ServiceUser implements IServiceUser<User>  {
     
     public void insert(User u){
         try {
-         stat=connection.prepareStatement("INSERT INTO User(email,password,nom,prenom,numero,adresse,BirthDate,sexe,type,enable) VALUES (?,?,?,?,?,?,?,?,?,?)");
+         String requete ="INSERT INTO User(email,password,nom,prenom,numero,adresse,BirthDate,sexe,type,enable) VALUES (?,?,?,?,?,?,?,?,?,?)";
+         stat=connection.prepareStatement(requete);
          stat.setString(1,u.getEmail());
          stat.setString(2,u.getPassword());
          stat.setString(4,u.getNom());

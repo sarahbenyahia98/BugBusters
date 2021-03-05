@@ -6,8 +6,10 @@
 package Test;
 
 import Entities.Gender;
+import Entities.Reclamation;
 import Entities.Type;
 import Entities.User;
+import Services.ServiceReclamation;
 import Services.ServiceUser;
 import Services.ServiceUser;
 import java.sql.Date;
@@ -57,6 +59,15 @@ static ResultSet result;
         ser.insert(p1);
         ser.delete(p2);
         ser.update(p1);
+        
+        ServiceReclamation serR = new ServiceReclamation();
+        Reclamation r1 = new Reclamation();
+        r1.setdescription("description");
+        r1.setetat("etat");
+        r1.setType(Type.SimpleUser);
+        
+        serR.insert(r1);
+        
         
     }
 }
