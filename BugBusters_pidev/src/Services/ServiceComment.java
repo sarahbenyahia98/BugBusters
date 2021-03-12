@@ -16,8 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import services.Iservicecomment;
-import utils.connexion;
+import Utils.DataBaseConnection;
 /**
  *
  * @author seif
@@ -26,7 +25,7 @@ public class ServiceComment {
 
     Connection cnx;
     public ServiceComment(){
-        cnx=connexion.getInstance().getConnection();
+        cnx=DataBaseConnection.getInstance().getConnection();
         
     }
          

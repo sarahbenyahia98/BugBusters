@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import utils.connexion;
+import Utils.DataBaseConnection;
 
 /**
  *
@@ -21,7 +21,7 @@ import utils.connexion;
 public class ServiceLike {
       Connection cnx;
     public ServiceLike(){
-        cnx=connexion.getInstance().getConnection();
+        cnx=DataBaseConnection.getInstance().getConnection();
     
 }
     

@@ -14,7 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import utils.connexion;
+import Utils.DataBaseConnection;
 
 /**
  *
@@ -23,7 +23,7 @@ import utils.connexion;
 public class ServicePublicite {
     Connection cnx;
     public ServicePublicite(){
-        cnx=connexion.getInstance().getConnection();
+        cnx=DataBaseConnection.getInstance().getConnection();
     
 }   
     
