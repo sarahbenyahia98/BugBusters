@@ -16,7 +16,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import Utils.DataBaseConnection;
+import services.Iservicecomment;
+import utils.connexion;
 /**
  *
  * @author seif
@@ -25,7 +26,7 @@ public class ServiceComment {
 
     Connection cnx;
     public ServiceComment(){
-        cnx=DataBaseConnection.getInstance().getConnection();
+        cnx=connexion.getInstance().getConnection();
         
     }
          
@@ -60,12 +61,11 @@ public class ServiceComment {
       int x=0;
         x=shownum(); 
         
-        int q=1;
-        String b="seif";
+        
         Statement stm=cnx.createStatement();
         String req="insert into comment (comment,userid,username,postid) values ('"+c.getComment()+
-                "','"+q+
-                "','"+b+
+                "','"+c.getUserid()+
+                "','"+c.getUsername()+
                 "','"+x+
 
                 "')"; 
@@ -164,5 +164,91 @@ public class ServiceComment {
         return x;     }
      
          
+  public int getsessionid()
+             
+     {  
+        String req= " select id from session";
+        Statement st;
+        int id = 0;
+        try {
+            st=cnx.createStatement();
+            ResultSet res=st.executeQuery(req);
+           while (res.next()){
+              
+           id = res.getInt("id");
+
+        }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceComment.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          return id;
+     }
+            public String getsessionname()
+             
+     {  
+        String req= " select nom from session";
+        Statement st;
+        String name = null;
+        try {
+            st=cnx.createStatement();
+            ResultSet res=st.executeQuery(req);
+           while (res.next()){
+              
+           name = res.getString("nom");
+
+        }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceComment.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          return name;
+     }
+public int getsessionrole()
+             
+     {  
+        String req= " select role from session";
+        Statement st;
+        int role = 0;
+        try {
+            st=cnx.createStatement();
+            ResultSet res=st.executeQuery(req);
+           while (res.next()){
+              
+           role = res.getInt("role");
+
+        }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceComment.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          return role;
+     }
+
+ public ObservableList<String> swearAction()
+             
+     {  
+         
+        ObservableList<String> mylist=FXCollections.observableArrayList();
+        String req= " select word from swear";
+        Statement st;
+        try {
+            st=cnx.createStatement();
+            ResultSet res=st.executeQuery(req);
+           while (res.next()){
+
+            mylist.add(res.getString("word"));
+        }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceComment.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+          return mylist;
+     }
 
 }

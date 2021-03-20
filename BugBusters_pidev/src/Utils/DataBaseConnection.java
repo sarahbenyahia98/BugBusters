@@ -19,7 +19,7 @@ public class DataBaseConnection {
 
     public DataBaseConnection() {
          try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bugbusters", "root", "");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost/pidev", "root", "");
             System.out.println("Connexion établie!");
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
