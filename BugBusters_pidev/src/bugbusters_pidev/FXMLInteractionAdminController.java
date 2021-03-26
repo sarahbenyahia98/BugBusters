@@ -39,11 +39,14 @@ import javafx.util.Callback;
 import javafx.util.Duration;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
+
 /**
+ * FXML Controller class
  *
  * @author seif
  */
-public class FXMLInteractionController implements Initializable {
+public class FXMLInteractionAdminController implements Initializable {
+
     
     @FXML
     private TextField tfcomment;
@@ -56,8 +59,6 @@ public class FXMLInteractionController implements Initializable {
     @FXML
     private TableColumn<Comment, Integer> userid;
      public ObservableList<Comment> data = FXCollections.observableArrayList();
-     public ObservableList<String> dataList = FXCollections.observableArrayList();
-
      @FXML
     private TableColumn<Comment, Void> supp;
     
@@ -78,7 +79,9 @@ public class FXMLInteractionController implements Initializable {
     @FXML
     private Label ldislike;
     @FXML
-    private AnchorPane interct;
+    private Button gostat;
+    @FXML
+    private AnchorPane interctadmin;
     
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
@@ -137,21 +140,12 @@ public class FXMLInteractionController implements Initializable {
                             Comment selectedCat = getTableView().getItems().get(getIndex());
                           
                             ServiceComment suppService = new ServiceComment();
-                            if(selectedCat.getUserid()==suppService.getsessionid()){
 
                             suppService.deleteAction(selectedCat.getId());
                             ServiceComment ser = new ServiceComment();
                             data = ser.indexAction();
                             table.setItems(data);
-                            }
-                            else{
-                                Alert alert = new Alert(Alert.AlertType.WARNING);
-                                alert.setContentText("User can only delete his own comments ");
-                                alert.showAndWait();
-
-                                 System.out.println("********************************************");
-
-                            }
+                           
                         });
                     }                   
                                               
@@ -194,76 +188,52 @@ public class FXMLInteractionController implements Initializable {
          }
 
        
-    private int test(String s){
-        ServiceComment ser = new ServiceComment();
-         dataList = ser.swearAction();
-         int i=0;
-         
-         int size=dataList.size();
-         while(i < size ){
-             if (s.indexOf(dataList.get(i))>=0){
-                 return 1;                
-             }
-             i++;
-         }
-             
+           
+
+       
         
-        return 0;
-    }
 
     @FXML
     private void AjouterComment(ActionEvent event) {
        
-        if(test(tfcomment.getText())!=0)
-        {
-            System.out.print("king"+test(tfcomment.getText()));
-            
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("WARNING");
-            alert.setHeaderText("Swear detected");
-             alert.setContentText("you cant say that in here");
+        
+        if (tfcomment.getText() == null || tfcomment.getText().length() == 0) {
+               Alert alert = new Alert(Alert.AlertType.WARNING);
+    //  alert.initOwner(AjoutEquipmentController.getPrimaryStage());
+        alert.setTitle("No Selection");
+        alert.setHeaderText("commentaire vide");
+        alert.setContentText("le champs de commentaire est vide .");
 
-                alert.showAndWait();
+        alert.showAndWait();
+    
         }
         else
         {
-            System.out.print("king"+test(tfcomment.getText()));
-            if (tfcomment.getText() == null || tfcomment.getText().length() == 0) {
-                   Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("No Selection");
-            alert.setHeaderText("commentaire vide");
-            alert.setContentText("le champs de commentaire est vide .");
-
-            alert.showAndWait();
-    
-            }
-            else
-            {
-
-            ServiceComment sc=new ServiceComment();
-            Comment c=new Comment();
-
-           c.setUserid(sc.getsessionid());
-           c.setUsername(sc.getsessionname());
-            c.setComment(tfcomment.getText());
-            try {
-
-                sc.AddComment(c);
-                data = sc.indexAction();
-            table.setItems(data);
-
-           TrayNotification tray = new TrayNotification();
-                    tray.setTitle("New Comment");
-                    tray.setMessage(tfcomment.getText());
-                    tray.setNotificationType(NotificationType.SUCCESS);
-                    tray.showAndDismiss(Duration.seconds(5));
-
-
-            } catch (SQLException ex) {
-                Logger.getLogger(FXMLInteractionController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+      
+        ServiceComment sc=new ServiceComment();
+        Comment c=new Comment();
+        
+       c.setUserid(sc.getsessionid());
+       c.setUsername(sc.getsessionname());
+        c.setComment(tfcomment.getText());
+        try {
+            
+            sc.AddComment(c);
+            data = sc.indexAction();
+        table.setItems(data);
+        
+       TrayNotification tray = new TrayNotification();
+                tray.setTitle("New Comment");
+                tray.setMessage(tfcomment.getText());
+                tray.setNotificationType(NotificationType.SUCCESS);
+                tray.showAndDismiss(Duration.seconds(5));
+        
+         
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLInteractionController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }}
-    }
+
         @FXML
     private void AjouterLike(ActionEvent event) throws SQLException {
 
@@ -351,12 +321,21 @@ public class FXMLInteractionController implements Initializable {
 
     @FXML
     private void goback(ActionEvent event) throws IOException {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("FXMLPub.fxml"));
-                                   interct.getChildren().setAll(pane);  
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("FXMLPubAdmin.fxml"));
+                                   interctadmin.getChildren().setAll(pane);  
         
     }
 
-   
+    @FXML
+    private void gotostat(ActionEvent event) throws IOException {
+          Parent root = FXMLLoader.load(getClass().getResource("FXMLchart.fxml"));
+        
+        Scene scene = new Scene(root);
+        
+         Stage appstage = (Stage)((Node) event.getSource()).getScene().getWindow() ;
+        appstage.setScene(scene);
+        appstage.show();
+    }
     
 }
                         

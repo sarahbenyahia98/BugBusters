@@ -7,24 +7,30 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="509.0" prefWidth="804.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crud.FXMLPubController">
+<AnchorPane id="AnchorPane" fx:id="pub" prefHeight="509.0" prefWidth="804.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crud.FXMLPubController">
    <children>
-      <TextField fx:id="tfdescription" layoutX="167.0" layoutY="405.0" prefHeight="82.0" prefWidth="509.0" />
-      <Label layoutX="72.0" layoutY="451.0" text="Description" />
-      <Button fx:id="addpub" layoutX="697.0" layoutY="446.0" mnemonicParsing="false" onAction="#AjouterPublicite" prefHeight="27.0" prefWidth="75.0" text="ADD" />
-      <TableView fx:id="table" layoutX="7.0" layoutY="60.0" prefHeight="283.0" prefWidth="786.0">
+      <TextField fx:id="tfdescription" layoutX="177.0" layoutY="415.0" prefHeight="82.0" prefWidth="509.0" />
+      <Label layoutX="82.0" layoutY="461.0" text="Description" />
+      <Button fx:id="addpub" layoutX="707.0" layoutY="456.0" mnemonicParsing="false" onAction="#AjouterPublicite" prefHeight="27.0" prefWidth="75.0" text="ADD" />
+      <TableView fx:id="table" layoutX="17.0" layoutY="70.0" prefHeight="283.0" prefWidth="721.0">
          <columns>
             <TableColumn fx:id="colId" prefWidth="58.0" text="ID" />
             <TableColumn fx:id="colnompub" onEditCommit="#editnom" prefWidth="133.0" text="nom_pub" />
             <TableColumn fx:id="coldescription" onEditCommit="#editdescription" prefWidth="119.0" text="description" />
             <TableColumn fx:id="coldate" prefWidth="108.0" text="date" />
+            <TableColumn fx:id="colusername" prefWidth="75.0" text="username" />
             <TableColumn fx:id="userid" prefWidth="55.0" text="userid" />
             <TableColumn fx:id="supp" prefWidth="75.0" text="supprimer" />
-            <TableColumn fx:id="interaction" prefWidth="82.0" />
+            <TableColumn fx:id="interaction" prefWidth="75.0" />
          </columns>
       </TableView>
-      <Label layoutX="72.0" layoutY="372.0" text="Pub Nom" />
-      <TextField fx:id="tfpubnom" layoutX="167.0" layoutY="367.0" prefHeight="27.0" prefWidth="190.0" />
-      <TextField fx:id="filterField" layoutX="141.0" layoutY="14.0" prefHeight="27.0" prefWidth="440.0" />
+      <Label layoutX="82.0" layoutY="382.0" text="Pub Nom" />
+      <TextField fx:id="tfpubnom" layoutX="177.0" layoutY="377.0" prefHeight="27.0" prefWidth="190.0" />
+      <Button fx:id="bsearch" layoutX="80.0" layoutY="24.0" mnemonicParsing="false" onAction="#gotosearch" text="Search" />
+      <Label layoutX="337.0" layoutY="29.0" text="Tri par" />
+      <Button fx:id="btriid" layoutX="391.0" layoutY="24.0" mnemonicParsing="false" onAction="#triid" text="ID" />
+      <Button fx:id="btrinom" layoutX="432.0" layoutY="24.0" mnemonicParsing="false" onAction="#trinom" text="USERID" />
+      <Button fx:id="btridate" layoutX="503.0" layoutY="24.0" mnemonicParsing="false" onAction="#tridate" text="DATE" />
+      <Button fx:id="bpdf" layoutX="686.0" layoutY="24.0" mnemonicParsing="false" onAction="#est" text="Imprimer PDF" />
    </children>
 </AnchorPane>

@@ -14,6 +14,7 @@
          </children>
       </VBox>
       <Button fx:id="bach" layoutX="11.0" layoutY="441.0" mnemonicParsing="false" onAction="#goback" text="Go Back" />
-      <Label fx:id="lcount" layoutX="240.0" layoutY="446.0" prefHeight="17.0" prefWidth="228.0" />
+      <Label fx:id="lcount" layoutX="167.0" layoutY="446.0" prefHeight="17.0" prefWidth="228.0" />
+      <Button fx:id="btlike" layoutX="487.0" layoutY="441.0" mnemonicParsing="false" onAction="#toplike" text="Top Like" />
    </children>
 </AnchorPane>

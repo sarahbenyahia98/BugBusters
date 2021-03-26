@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crud.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="interct" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crud.FXMLInteractionController">
    <children>
       <TextField fx:id="tfcomment" layoutX="156.0" layoutY="408.0" prefHeight="82.0" prefWidth="509.0" />
       <Label layoutX="62.0" layoutY="441.0" text="Comment" />
@@ -23,9 +23,8 @@
       </TableView>
       <Button fx:id="blike" layoutX="315.0" layoutY="353.0" mnemonicParsing="false" onAction="#AjouterLike" text="Like" />
       <Button fx:id="bdislike" layoutX="430.0" layoutY="353.0" mnemonicParsing="false" onAction="#AjouterDislike" text="Dislike" />
-      <Button fx:id="bach" layoutX="39.0" layoutY="88.0" mnemonicParsing="false" onAction="#goback" text="Back" />
+      <Button fx:id="bach" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goback" text="Back" />
       <Label fx:id="llike" layoutX="370.0" layoutY="358.0" />
       <Label fx:id="ldislike" layoutX="496.0" layoutY="358.0" />
-      <Button fx:id="gostat" layoutX="707.0" layoutY="61.0" mnemonicParsing="false" onAction="#gotostat" text="Stat" />
    </children>
 </AnchorPane>

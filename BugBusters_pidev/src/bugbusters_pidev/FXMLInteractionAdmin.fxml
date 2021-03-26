@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="interctadmin" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crud.FXMLInteractionAdminController">
+   <children>
+      <TextField fx:id="tfcomment" layoutX="166.0" layoutY="418.0" prefHeight="82.0" prefWidth="509.0" />
+      <Label layoutX="72.0" layoutY="451.0" text="Comment" />
+      <Button fx:id="post" layoutX="697.0" layoutY="446.0" mnemonicParsing="false" onAction="#AjouterComment" prefHeight="27.0" prefWidth="75.0" text="Post" />
+      <TableView fx:id="table" layoutX="132.0" layoutY="66.0" prefHeight="319.0" prefWidth="543.0">
+         <columns>
+            <TableColumn fx:id="colId" prefWidth="54.0" text="ID" />
+            <TableColumn fx:id="userid" prefWidth="55.0" text="userid" />
+            <TableColumn fx:id="colusername" prefWidth="105.0" text="username" />
+            <TableColumn fx:id="colcomment" onEditCommit="#editcomment" prefWidth="261.0" text="comment" />
+            <TableColumn fx:id="supp" prefWidth="73.0" text="supprimer" />
+         </columns>
+      </TableView>
+      <Button fx:id="blike" layoutX="325.0" layoutY="386.0" mnemonicParsing="false" onAction="#AjouterLike" text="Like" />
+      <Button fx:id="bdislike" layoutX="442.0" layoutY="386.0" mnemonicParsing="false" onAction="#AjouterDislike" text="Dislike" />
+      <Button fx:id="bach" layoutX="24.0" layoutY="24.0" mnemonicParsing="false" onAction="#goback" text="Back" />
+      <Label fx:id="llike" layoutX="380.0" layoutY="368.0" />
+      <Label fx:id="ldislike" layoutX="506.0" layoutY="368.0" />
+      <Button fx:id="gostat" layoutX="752.0" layoutY="24.0" mnemonicParsing="false" onAction="#gotostat" text="Stat" />
+      <Label layoutX="314.0" layoutY="10.0" text="BackEnd" textFill="#dd2f2f">
+         <font>
+            <Font size="44.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

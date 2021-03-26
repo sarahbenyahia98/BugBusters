@@ -5,8 +5,8 @@
  */
 package bugbusters_pidev;
 
-import Service.ServicePublicite;
 import Entities.Publicite;
+import Service.ServicePublicite;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -26,8 +26,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,7 +35,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.SortEvent;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -51,12 +48,13 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.util.Callback;
+
 /**
  * FXML Controller class
  *
  * @author seif
  */
-public class FXMLPubController implements Initializable {
+public class FXMLPubAdminController implements Initializable {
 
     @FXML
     private TextField tfdescription;
@@ -100,7 +98,7 @@ public class FXMLPubController implements Initializable {
     @FXML
     private Button bpdf;
     @FXML
-    private AnchorPane pub;
+    private AnchorPane pubadmin;
    
     
 
@@ -226,10 +224,8 @@ else
     
      @FXML
     private void editnom(TableColumn.CellEditEvent ec) {
-         
- 
-       
-                               
+        
+                                
         Publicite c=table.getSelectionModel().getSelectedItem();
         c.setPubnom(ec.getNewValue().toString());
         ServicePublicite ser = new ServicePublicite();
@@ -245,6 +241,7 @@ else
                                 }
         
     }       
+           
     
      @FXML
     private void editdescription(TableColumn.CellEditEvent ec) {
@@ -277,14 +274,14 @@ else
                 ser.upadatepost(selectedCat.getId());
                               
                               
+                            Parent root = null;
                               try {
-                                    AnchorPane pane = FXMLLoader.load(getClass().getResource("FXMLInteraction.fxml"));
-                                     pub.getChildren().setAll(pane);
-                              } catch (IOException ex) {
+                                    AnchorPane pane = FXMLLoader.load(getClass().getResource("FXMLInteractionAdmin.fxml"));
+                                   pubadmin.getChildren().setAll(pane);                              } catch (IOException ex) {
                                   Logger.getLogger(FXMLPubController.class.getName()).log(Level.SEVERE, null, ex);
                               }
         
-        
+      
                               //*****************************
                               
 
@@ -329,22 +326,13 @@ else
                             Publicite selectedCat = getTableView().getItems().get(getIndex());
                            
                             ServicePublicite suppService = new ServicePublicite();
-                            if(selectedCat.getUserid()==suppService.getsessionid()){
                                
                                 suppService.deleteAction(selectedCat.getId());
                                 ServicePublicite ser = new ServicePublicite();
                                 data = ser.indexAction();
                                 table.setItems(data);
                                 
-                                }
-                            else{
-                                Alert alert = new Alert(Alert.AlertType.WARNING);
-                                alert.setContentText("User can only delete his own publication ");
-                                alert.showAndWait();
-
-                                 System.out.println("********************************************");
-
-                            }
+                               
                             
                         });
                     }
@@ -483,14 +471,6 @@ else
  
            fileChooser.setInitialDirectory(new File(System.getProperty("user")));
             
-        
-       
-     
-
-       
-        
-       
-     
 
        
             }

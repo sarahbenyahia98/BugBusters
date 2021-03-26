@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="278.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="crud.FXMLToplikeController">
+   <children>
+      <Label layoutX="9.0" layoutY="22.0" text="Top Liked Publication" textFill="#b92020">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <Label fx:id="username" layoutX="60.0" layoutY="149.0" prefHeight="17.0" prefWidth="159.0" />
+      <Label fx:id="pubnom" layoutX="58.0" layoutY="183.0" prefHeight="17.0" prefWidth="159.0" />
+      <Label fx:id="description" layoutX="58.0" layoutY="222.0" prefHeight="17.0" prefWidth="159.0" />
+      <Label fx:id="date" layoutX="58.0" layoutY="265.0" prefHeight="17.0" prefWidth="159.0" />
+      <Label fx:id="nblike" layoutX="41.0" layoutY="308.0" prefHeight="17.0" prefWidth="69.0" />
+      <Button fx:id="bback" layoutX="14.0" layoutY="359.0" mnemonicParsing="false" onAction="#goback" text="GoBack" />
+      <Label fx:id="nbdislike" layoutX="150.0" layoutY="308.0" prefHeight="17.0" prefWidth="69.0" />
+   </children>
+</AnchorPane>

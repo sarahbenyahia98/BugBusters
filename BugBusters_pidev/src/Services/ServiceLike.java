@@ -132,7 +132,6 @@ public class ServiceLike {
         } catch (SQLException ex) {
             Logger.getLogger(ServiceComment.class.getName()).log(Level.SEVERE, null, ex);
         }
-      //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
           public int search(Like l) throws SQLException{
                String req= " select * from likes where userid = 1 ";
@@ -152,6 +151,21 @@ public class ServiceLike {
         
         
           }
+          
+          
+          public void updatenbl(int s){
+       int x=0;
+        x=shownum(); 
+         String req= " UPDATE publicite SET nbl=nbl+'"+s+"'where id_pub ='"+x+"'" ;
+        Statement st;
+        try {
+             st = cnx.createStatement();
+             st.executeUpdate(req);
+                    }   
+        catch (SQLException ex) {
+            Logger.getLogger(ServiceComment.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
                  
 
     }

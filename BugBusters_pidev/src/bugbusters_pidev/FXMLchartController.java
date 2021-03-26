@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package crud;
+package bugbusters_pidev;
 
 import Service.ServiceComment;
 import Service.ServiceLike;
@@ -38,6 +38,8 @@ public class FXMLchartController implements Initializable {
     private Button bach;
     @FXML
     private Label lcount;
+    @FXML
+    private Button btlike;
 
     /**
      * Initializes the controller class.
@@ -51,7 +53,7 @@ public class FXMLchartController implements Initializable {
         x=ser.countcomment();
        String s=String.valueOf(x);
 
- lcount.setText(s +" Comments");
+ lcount.setText("This post has "+ s +" Comments");
  
     }    
     private void loadData() {
@@ -76,7 +78,18 @@ public class FXMLchartController implements Initializable {
 
     @FXML
     private void goback(ActionEvent event) throws IOException {
-         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+         Parent root = FXMLLoader.load(getClass().getResource("FXMLInteractionAdmin.fxml"));
+        
+        Scene scene = new Scene(root);
+        
+         Stage appstage = (Stage)((Node) event.getSource()).getScene().getWindow() ;
+        appstage.setScene(scene);
+        appstage.show();
+    }
+
+    @FXML
+    private void toplike(ActionEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("FXMLToplike.fxml"));
         
         Scene scene = new Scene(root);
         

@@ -13,6 +13,8 @@ public class Comment {
     private int id;
     private int userid;
     private int postid;
+    private String comment;
+    private String username;
 
     @Override
     public String toString() {
@@ -66,8 +68,7 @@ public class Comment {
         this.comment = comment;
         this.username = username;
     }
-    private String comment;
-    private String username;
+    
 
 
 
