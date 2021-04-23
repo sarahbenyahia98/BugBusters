@@ -1,0 +1,106 @@
+{% extends 'front.html.twig' %}
+{% block content %}
+    <!-- Header -->
+    <header id="head">
+        <div class="container">
+            <div class="row">
+                <h1 class="lead">EVENEMENT</h1>
+                <p class="tagline">!!!!!!!</p>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- /Header -->
+    <!-- Intro -->
+    <br>
+    <!-- Offres-->
+    <body>
+
+
+
+
+
+
+                    {% for evenement  in evenement %}
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card h-100">
+                                <a href="#"><img height="250px" width="250px" src="{{ asset('uploads/images/') }}{{evenement.image}}"> ></a>
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <a href="#">{{evenement.nom }}</a>
+                                    </h4>
+                                    <h5>le nombre de participants :</h5>
+                                    <p>{{evenement.nbrparticipant}}</p>
+
+
+                                    <h5>la date de debut de l'evenement  :</h5>
+
+
+                                    <p>{{ evenement.datedebut |date("m/d/Y") }}</p>
+
+                                    <h5>la date fin de l'evenement  :</h5>
+
+
+                                    <p>{{ evenement.datefin |date("m/d/Y") }}</p>
+
+                                    <a href="{{ path("commentaire",{"id":evenement.id}) }}"class="btn btn-primary btn-lg btn-block">Details</a>
+
+
+
+
+
+
+
+
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- /.row -->
+
+
+
+
+    <br>
+</div>
+<!-- /.container -->
+<!-- /Offres-->
+<!-- Counter Area Start-->
+<section class="counter-section section-padding">
+    <div class="container">
+        <div class="row">
+
+            <!-- Counter Item -->
+
+            <!-- Counter Item -->
+            <div class="col-lg-3 col-md-6 col-sm-12 work-counter-widget">
+                <div class="counter wow fadeInDown" data-wow-delay="0.9s">
+                    <div class="icon"><i class="lni-cup"></i></div>
+                    <div class="counterUp"></div>
+                    <p>Nos Evenements</p>
+                </div>
+            </div>
+            <!-- Counter Item -->
+
+        </div>
+    </div>
+</section>
+<!-- /test-->
+{% endblock %}
